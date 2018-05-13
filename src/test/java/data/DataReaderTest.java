@@ -46,9 +46,9 @@ public class DataReaderTest {
         assertThat(numberOfSenteces, is(500L));
     }
 
-//    @Test
-//    public void remove() {
-//        result.stream()
-//                .forEach(System.out::println);
-//    }
+    @Test
+    public void remove() {
+        result.stream()
+                .forEach(System.out::println);
+    }
 }
