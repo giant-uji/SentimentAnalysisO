@@ -36,6 +36,7 @@ public class DataReader {
         char charScore = sentenceWithScore.charAt(sentenceWithScore.length() - 1);
         int score = Integer.parseInt(charScore + "");
         String sentence = sentenceWithScore.substring(0, sentenceWithScore.length() - 2).trim();
+        sentence = sentence.toLowerCase();
         sentence = purgePunctuation(sentence);
         return new SentenceSentimentScore(sentence, score);
     }
