@@ -37,4 +37,11 @@ public class SentencesGroupper {
         if(negativeSenteces == null) groupSentences();
         return negativeSenteces;
     }
+
+    public List<String> allSentences() {
+        if(positiveSenteces == null) groupSentences();
+        List<String> result = new ArrayList<>(positiveSenteces);
+        result.addAll(negativeSenteces);
+        return result;
+    }
 }

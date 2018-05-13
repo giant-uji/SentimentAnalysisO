@@ -15,7 +15,7 @@ public class DataReaderTest {
 
     @BeforeAll
     public static void init() {
-        dt = new DataReader("src/main/resources/yelp_labelled.txt");
+        dt = new DataReader("src/main/resources/yelp_labelled.txt", 80);
         result = dt.process();
     }
 

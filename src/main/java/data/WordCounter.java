@@ -46,4 +46,8 @@ public class WordCounter {
     public double frequency(String word) {
         return ((double)times(word))/wordCount;
     }
+
+    public double logarithmicFrequency(String word) {
+        return Math.log(frequency(word));
+    }
 }
