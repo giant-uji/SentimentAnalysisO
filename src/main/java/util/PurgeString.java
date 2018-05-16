@@ -17,8 +17,12 @@ public class PurgeString {
 
     public static String removeDeterminants(String input) {
         String output = new String(input);
-        for(String symbol: determinants) {
-            output = output.replace(symbol, "");
+        String[] outputSplitted = output.split(" ");
+        output = new String();
+        for(String word: outputSplitted) {
+            if (!determinants.contains(word)) {
+                output = output + " " + word;
+            }
         }
         return output;
     }

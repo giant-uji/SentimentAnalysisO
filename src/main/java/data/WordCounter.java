@@ -24,6 +24,17 @@ public class WordCounter {
 
     private void addWords(String[] words) {
         wordCount += words.length;
+
+        for(int i=0 ; i<words.length-1 ; i++ ){
+            String twoWords = words[i]+" "+words[i+1];
+            if (wordsCount.containsKey(twoWords)){
+                long previous = wordsCount.get(twoWords);
+                wordsCount.replace(twoWords, ++previous);
+            }else {
+                wordsCount.put(twoWords, 1L);
+            }
+        }
+
         for(String word: words) {
             if(wordsCount.containsKey(word)) {
                 long previous = wordsCount.get(word);
@@ -32,6 +43,8 @@ public class WordCounter {
                 wordsCount.put(word, 1L);
             }
         }
+
+
     }
 
     public long times(String word) {

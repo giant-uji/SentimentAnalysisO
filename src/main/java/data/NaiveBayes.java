@@ -33,9 +33,15 @@ public class NaiveBayes {
         sentence = PurgeString.removePunctuationSymbols(sentence);
         sentence = PurgeString.removeDeterminants(sentence);
         double positive, result = 0;
-        for(String word: sentence.split(" ")) {
+        String[] vectorString = sentence.split(" ");
+        for(String word: vectorString) {
             positive = positiveCounter.frequency(word);
             if(positive != 0 ) result += Math.log(positive) / allCounter.logarithmicFrequency(word);
+        }
+        for (int i=0 ; i<vectorString.length-1 ; i++){
+            String twoWords = vectorString[i] + " " +vectorString[i+1];
+            positive = positiveCounter.frequency(twoWords);
+            if (positive != 0) result += Math.log(positive) / allCounter.logarithmicFrequency(twoWords);
         }
         return result;
     }
@@ -45,9 +51,15 @@ public class NaiveBayes {
         sentence = PurgeString.removePunctuationSymbols(sentence);
         sentence = PurgeString.removeDeterminants(sentence);
         double negative, result = 0;
-        for(String word: sentence.split(" ")) {
+        String[] vectorString = sentence.split(" ");
+        for(String word: vectorString) {
             negative = negativeCounter.frequency(word);
             if(negative != 0) result += Math.log(negative) / allCounter.logarithmicFrequency(word);
+        }
+        for (int i=0 ; i<vectorString.length-1 ; i++){
+            String twoWords = vectorString[i] + " " +vectorString[i+1];
+            negative = positiveCounter.frequency(twoWords);
+            if (negative != 0) result += Math.log(negative) / allCounter.logarithmicFrequency(twoWords);
         }
         return result;
     }
